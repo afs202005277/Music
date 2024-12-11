@@ -1,7 +1,6 @@
 import time
 from collections import defaultdict
 import json
-from typing import final
 
 import numpy as np
 import requests
@@ -108,17 +107,6 @@ def initialize_spotify_client(client_id, client_secret):
 
 def get_spotify_id(spotify_client, song_name, artist_name):
     global found_with_main, found_with_secondary, not_found
-    """
-    Fetches the Spotify ID for a specific song by a given artist.
-
-    Parameters:
-    - song_name (str): The name of the song.
-    - artist_name (str): The name of the artist.
-
-    Returns:
-    - dict: A dictionary containing the song name, artist name, and Spotify ID.
-    - None: If no match is found.
-    """
     # Construct the search query
     query = f"track:{song_name} artist:{artist_name}"
 
@@ -143,20 +131,6 @@ def get_spotify_id(spotify_client, song_name, artist_name):
 
 
 def spotify_call(api_call, *args, **kwargs):
-    """
-    Encapsulates a call to the Spotify API with retry logic.
-
-    Args:
-        api_call (callable): A function or method that makes the Spotify API call.
-        *args: Positional arguments to pass to the api_call.
-        **kwargs: Keyword arguments to pass to the api_call.
-
-    Returns:
-        The result of the API call if successful.
-
-    Raises:
-        SpotifyException: If the API call fails after 3 retries.
-    """
     max_retries = 3
     retry_delay = 45
 
@@ -173,13 +147,6 @@ def spotify_call(api_call, *args, **kwargs):
 
 
 def get_audio_features(spotify_client, spotify_ids):
-    """
-    Fetch the audio features for a list of Spotify track IDs.
-
-    :param spotify_client: Initialized Spotify API client
-    :param spotify_ids: List of Spotify track IDs
-    :return: Dictionary of Spotify track IDs to their audio features
-    """
     step = 1
     audio_features = {}
 
@@ -196,19 +163,6 @@ def get_audio_features(spotify_client, spotify_ids):
 
 
 def create_dataframe(yearly_top_100, spotify_ids):
-    """
-    Merges yearly_top_100 dictionary and spotify_ids dictionary into a Pandas DataFrame.
-
-    Args:
-        yearly_top_100 (dict): Dictionary containing top 100 songs data for each year.
-                               Format: {year: [[[song_name, artist], num_days], ...]}
-        spotify_ids (dict): Dictionary containing Spotify IDs mapped to song and artist.
-                            Format: {spotify_id: [song_name, artist]}
-
-    Returns:
-        pd.DataFrame: DataFrame containing the merged data with columns:
-                      ['Year', 'Song Name', 'Artist', 'Number of Days', 'Spotify ID'].
-    """
     data = []
     for year, songs in yearly_top_100.items():
         for song_info in songs:
@@ -228,15 +182,6 @@ def create_dataframe(yearly_top_100, spotify_ids):
 
 
 def count_missing_values(df):
-    """
-    Counts the number of missing values in each column of a DataFrame.
-
-    Args:
-        df (pd.DataFrame): The DataFrame to check.
-
-    Returns:
-        pd.Series: A Series where the index is the column name and the value is the count of missing values.
-    """
     missing_counts = df.isnull().sum()
     # Filter to show only columns with missing values
     missing_columns = missing_counts[missing_counts > 0]
@@ -244,15 +189,6 @@ def count_missing_values(df):
 
 
 def preprocess_text(text):
-    """
-    Preprocess the text: lowercase, remove special characters, and tokenize into words.
-
-    Args:
-        text (str): The text to preprocess.
-
-    Returns:
-        set: A set of lowercase tokens (words).
-    """
     # Lowercase the text and remove non-alphanumeric characters (including punctuation)
     text = str(text).lower()
     text = re.sub(r'[^a-z0-9\s]', '', text)
@@ -307,10 +243,6 @@ def match_dataframes_worker(args):
 
 
 def parallel_match_dataframes(df1, df2):
-    """
-    Parallel wrapper for match_dataframes function.
-    Splits df1 into chunks and processes them in parallel.
-    """
     # Determine the number of CPU cores
     cpu_count = mp.cpu_count()
 
@@ -343,19 +275,6 @@ def merge_spotify_datasets(datasets_with_translations):
     return pd.concat(renamed_datasets, axis=0, join='inner', ignore_index=True)
 
 def join_dataframes_on_spotify_id(df1, df2):
-    """
-    Joins two DataFrames on the 'spotify_id' column, keeping only rows with a match.
-    Additionally, returns the original df1 without the rows that have matched.
-
-    Parameters:
-        df1 (pd.DataFrame): The first DataFrame.
-        df2 (pd.DataFrame): The second DataFrame.
-
-    Returns:
-        tuple: A tuple containing:
-            - pd.DataFrame: A new DataFrame with rows that have a matching 'spotify_id'.
-            - pd.DataFrame: The original df1 without the rows that have matched.
-    """
     # Perform an inner join on the 'spotify_id' column
     joined_df = pd.merge(df1, df2, on='Spotify ID', how='inner')
 
@@ -366,16 +285,6 @@ def join_dataframes_on_spotify_id(df1, df2):
 
 
 def join_dataframes_vertically(df1, df2):
-    """
-    Joins two DataFrames vertically (on axis=0) while keeping only the common columns.
-
-    Parameters:
-        df1 (pd.DataFrame): The first DataFrame.
-        df2 (pd.DataFrame): The second DataFrame.
-
-    Returns:
-        pd.DataFrame: A new DataFrame resulting from the vertical concatenation.
-    """
     # Find common columns
     common_columns = df1.columns.intersection(df2.columns)
 
