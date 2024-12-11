@@ -1,6 +1,9 @@
 import time
 from collections import defaultdict
 import json
+from typing import final
+
+import numpy as np
 import requests
 from datetime import datetime, timedelta
 import spotipy
@@ -9,10 +12,37 @@ from spotipy import SpotifyException
 from spotipy.oauth2 import SpotifyClientCredentials
 import os
 import re
+import multiprocessing as mp
+import pandas as pd
 
 found_with_main = 0
 found_with_secondary = 0
 not_found = 0
+
+
+def process_csv(file_name):
+    try:
+        # Read the CSV file into a DataFrame
+        df = pd.read_csv(file_name)
+
+        # Ensure the 'track_album_release_date' column exists
+        if 'Year' not in df.columns:
+            print("The 'Year' column is not found in the CSV file.")
+            return
+
+        # Drop rows with invalid dates
+        df = df.dropna(subset=['Year'])
+
+        counts_per_year = df['Year'].value_counts().sort_index()
+
+        # Print the results
+        print("Number of rows per year:")
+        print(counts_per_year)
+
+    except FileNotFoundError:
+        print(f"The file '{file_name}' does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 def get_valid_dates():
@@ -141,6 +171,7 @@ def spotify_call(api_call, *args, **kwargs):
                 print("API call failed after 3 attempts. Raising exception.")
                 raise
 
+
 def get_audio_features(spotify_client, spotify_ids):
     """
     Fetch the audio features for a list of Spotify track IDs.
@@ -162,9 +193,6 @@ def get_audio_features(spotify_client, spotify_ids):
                 audio_features[feature['id']] = feature
 
     return audio_features
-
-
-import pandas as pd
 
 
 def create_dataframe(yearly_top_100, spotify_ids):
@@ -197,6 +225,7 @@ def create_dataframe(yearly_top_100, spotify_ids):
 
     df = pd.DataFrame(data, columns=['Year', 'Song Name', 'Artist', 'Number of Weeks On Top', 'Spotify ID'])
     return df
+
 
 def count_missing_values(df):
     """
@@ -235,19 +264,22 @@ def preprocess_text(text):
 
 def match_dataframes(df1, df2):
     matched_rows = []
+    no_matches = []
+    # Ensure preprocess_text returns sets, or convert lists to sets
+    df1['song_name_tokens'] = df1['Song Name'].apply(lambda x: set(preprocess_text(x)))
+    df1['artist_tokens'] = df1['Artist'].apply(lambda x: set(preprocess_text(x)))
+    df2['track_name_tokens'] = df2['track_name'].apply(lambda x: set(preprocess_text(x)))
+    df2['artist_tokens'] = df2['track_artist'].apply(lambda x: set(preprocess_text(x)))
 
-    df1['song_name_tokens'] = df1['Song Name'].apply(preprocess_text)
-    df1['artist_tokens'] = df1['Artist'].apply(preprocess_text)
-    df2['track_name_tokens'] = df2['track_name'].apply(preprocess_text)
-    df2['artist_tokens'] = df2['track_artist'].apply(preprocess_text)
-
+    # Filter out rows with empty token sets
     df1 = df1[(df1['song_name_tokens'].apply(len) > 0) & (df1['artist_tokens'].apply(len) > 0)]
     df2 = df2[(df2['track_name_tokens'].apply(len) > 0) & (df2['artist_tokens'].apply(len) > 0)]
 
     matches = 0
     # Compare each row in df1 with each row in df2
     for i, row1 in df1.iterrows():
-        for j, row2 in df2.iterrows():
+        found = False
+        for _, row2 in df2.iterrows():
             # Check if song name matches
             song_name_match = row1['song_name_tokens'].issubset(row2['track_name_tokens']) or row2[
                 'track_name_tokens'].issubset(row1['song_name_tokens'])
@@ -255,57 +287,169 @@ def match_dataframes(df1, df2):
             artist_match = row1['artist_tokens'].issubset(row2['artist_tokens']) or row2['artist_tokens'].issubset(
                 row1['artist_tokens'])
 
-            # If both conditions are satisfied, it's a match
             if song_name_match and artist_match:
+                found = True
                 matches += 1
-                matched_rows.append({
-                    'df1_index': i,
-                    'df2_index': j,
-                    'Song Name (df1)': row1['Song Name'],
-                    'Artist (df1)': row1['Artist'],
-                    'Song Name (df2)': row2['track_name'],
-                    'Artist (df2)': row2['track_artist']
-                })
-                break
+                matched_rows.append({**row1.to_dict(), **row2.to_dict()})
+                break  # Stop further comparisons for this row in df1
+        if not found:
+            no_matches.append([row1['Song Name'], row1['Artist']])
+
     print(f"Matched {matches} rows, from a total of {len(df1)} rows.")
     # Create a DataFrame with the matched rows
     matched_df = pd.DataFrame(matched_rows)
-    return matched_df
+    return matched_df, no_matches
+
+
+def match_dataframes_worker(args):
+    chunk, df2 = args
+    return match_dataframes(chunk, df2)
+
+
+def parallel_match_dataframes(df1, df2):
+    """
+    Parallel wrapper for match_dataframes function.
+    Splits df1 into chunks and processes them in parallel.
+    """
+    # Determine the number of CPU cores
+    cpu_count = mp.cpu_count()
+
+    # Split df1 into roughly equal chunks
+    df1_chunks = np.array_split(df1, cpu_count)
+
+    print(f"Processing {len(df1_chunks)} chunks of {len(df1_chunks[0])} rows each.")
+
+    # Create arguments for the worker function
+    worker_args = [(chunk, df2) for chunk in df1_chunks]
+
+    # Create a multiprocessing pool
+    with mp.Pool(cpu_count) as pool:
+        # Map the worker function to each chunk of df1
+        results = pool.map(match_dataframes_worker, worker_args)
+
+    matched_rows = [match for (match, _) in results]
+    no_matched_rows = [no_match for (_, no_match) in results]
+
+    save_results(no_matched_rows, 'no_matches.json')
+    final_df = pd.concat(matched_rows, ignore_index=True)
+
+    return final_df
+
+
+def merge_spotify_datasets(datasets_with_translations):
+    renamed_datasets = []
+    for dataset, col_renaming in datasets_with_translations:
+        renamed_datasets.append(dataset.rename(columns=col_renaming))
+    return pd.concat(renamed_datasets, axis=0, join='inner', ignore_index=True)
+
+def join_dataframes_on_spotify_id(df1, df2):
+    """
+    Joins two DataFrames on the 'spotify_id' column, keeping only rows with a match.
+    Additionally, returns the original df1 without the rows that have matched.
+
+    Parameters:
+        df1 (pd.DataFrame): The first DataFrame.
+        df2 (pd.DataFrame): The second DataFrame.
+
+    Returns:
+        tuple: A tuple containing:
+            - pd.DataFrame: A new DataFrame with rows that have a matching 'spotify_id'.
+            - pd.DataFrame: The original df1 without the rows that have matched.
+    """
+    # Perform an inner join on the 'spotify_id' column
+    joined_df = pd.merge(df1, df2, on='Spotify ID', how='inner')
+
+    # Filter out rows in df1 that have matched
+    unmatched_df1 = df1[~df1['Spotify ID'].isin(joined_df['Spotify ID'])]
+
+    return joined_df, unmatched_df1
+
+
+def join_dataframes_vertically(df1, df2):
+    """
+    Joins two DataFrames vertically (on axis=0) while keeping only the common columns.
+
+    Parameters:
+        df1 (pd.DataFrame): The first DataFrame.
+        df2 (pd.DataFrame): The second DataFrame.
+
+    Returns:
+        pd.DataFrame: A new DataFrame resulting from the vertical concatenation.
+    """
+    # Find common columns
+    common_columns = df1.columns.intersection(df2.columns)
+
+    # Select only common columns from both DataFrames
+    df1_common = df1[common_columns]
+    df2_common = df2[common_columns]
+
+    # Concatenate vertically
+    vertically_joined_df = pd.concat([df1_common, df2_common], axis=0)
+
+    return vertically_joined_df
 
 def main(start_date_str, duration_years):
     top_100_by_year_file = "./yearly_top_100.json"
     spotify_ids_file = "./spotify_ids.json"
     dataframe_file = "./data.csv"
-    songs_dataset_file = "./datasets/spotify_songs.csv"
+    final_dataset_file = "./all.csv"
+    million_songs_dataset = pd.read_csv('datasets/spotify_data.csv')
+
+    million_songs_dataset = million_songs_dataset.rename(columns={'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
     spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225', 'deadf5cd6532478693b1c43631b362f5')
 
+    # fetch song names and artists from billboard 100
     if not os.path.isfile(top_100_by_year_file):
         results = fetch_songs_for_period(start_date_str, duration_years)
         save_results(results, top_100_by_year_file)
     top_100_by_year = load_data(top_100_by_year_file)
 
+    # fetch spotify ids
     if not os.path.isfile(spotify_ids_file):
         spotify_ids_per_song = dict()
         for songs in top_100_by_year.values():
             for (song, artist), _ in songs:
                 spotify_id = get_spotify_id(spotify_client, song, artist)
                 spotify_ids_per_song[str(spotify_id)] = (song, artist)
-        print(f"Found {found_with_main} songs at first try, {found_with_secondary} songs at second try and did not found {not_found} songs.\nTotal songs found: {found_with_main + found_with_secondary}.")
+        print(
+            f"Found {found_with_main} songs at first try, {found_with_secondary} songs at second try and did not found {not_found} songs.\nTotal songs found: {found_with_main + found_with_secondary}.")
         save_results(spotify_ids_per_song, spotify_ids_file)
     spotify_ids_per_song = load_data(spotify_ids_file)
 
+    # store mapping of songs to spotify ids
     if not os.path.isfile(dataframe_file):
         df = create_dataframe(top_100_by_year, spotify_ids_per_song)
         df.to_csv(dataframe_file, index=False)
 
+
+
+    df_2010_2019 = pd.read_csv('./datasets/2010_2019.csv')
+    df_2010_2019["instrumentalness"] = np.nan
+    # match between song names/artists with spotify data
+    unified_dataset = merge_spotify_datasets(
+        [[pd.read_csv('./datasets/30000.csv'), {}], [pd.read_csv('./datasets/114000.csv'),
+                                                     {'artists': 'track_artist',
+                                                      'popularity': 'track_popularity',
+                                                      'album_name': 'track_album_name',
+                                                      'track_genre': 'playlist_genre'}],
+         [pd.read_csv('./datasets/2000_2019.csv'),
+          {'genre': 'playlist_genre', 'artist': 'track_artist', 'song': 'track_name',
+           'popularity': 'track_popularity'}],
+         [df_2010_2019,
+          {'title': 'track_name', 'artist': 'track_artist', 'top genre': 'playlist_genre', 'nrgy': 'energy',
+           'dnce': 'danceability', 'val': 'valence', 'dur': 'duration_ms', 'acous': 'acousticness',
+           'spch': 'speechiness', 'pop': 'track_popularity', 'bpm': 'tempo', 'dB': 'loudness'}]])
+
     df1 = pd.read_csv(dataframe_file)
-    df2 = pd.read_csv(songs_dataset_file)
-    df = match_dataframes(df1, df2)
-    df.to_csv('all.csv', index=False)
-    print()
+    matched, unmatched = join_dataframes_on_spotify_id(df1, million_songs_dataset)
 
-
+    df = parallel_match_dataframes(unmatched, unified_dataset)
+    df = join_dataframes_vertically(df, matched)
+    df.to_csv(final_dataset_file, index=False)
 
 
 if __name__ == "__main__":
+    # print(len(pd.read_csv('all.csv')))
+    # process_csv('all.csv')
+    # exit()
     main("2000-01-01", 24)
