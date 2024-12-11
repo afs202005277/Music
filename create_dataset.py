@@ -46,7 +46,7 @@ def process_csv(file_name):
 
 
 def get_valid_dates():
-    file_path = "./valid_dates.json"
+    file_path = "./datasets_caches/valid_dates.json"
     with open(file_path, "r") as file:
         valid_dates = json.load(file)
         return list(map(lambda x: datetime.strptime(x, "%Y-%m-%d"), valid_dates))
@@ -330,7 +330,7 @@ def parallel_match_dataframes(df1, df2):
     matched_rows = [match for (match, _) in results]
     no_matched_rows = [no_match for (_, no_match) in results]
 
-    save_results(no_matched_rows, 'no_matches.json')
+    save_results(no_matched_rows, './datasets_caches/no_matches.json')
     final_df = pd.concat(matched_rows, ignore_index=True)
 
     return final_df
@@ -389,67 +389,79 @@ def join_dataframes_vertically(df1, df2):
     return vertically_joined_df
 
 def main(start_date_str, duration_years):
-    top_100_by_year_file = "./yearly_top_100.json"
-    spotify_ids_file = "./spotify_ids.json"
-    dataframe_file = "./data.csv"
-    final_dataset_file = "./all.csv"
-    million_songs_dataset = pd.read_csv('datasets/spotify_data.csv')
-
-    million_songs_dataset = million_songs_dataset.rename(columns={'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
-    spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225', 'deadf5cd6532478693b1c43631b362f5')
-
-    # fetch song names and artists from billboard 100
-    if not os.path.isfile(top_100_by_year_file):
-        results = fetch_songs_for_period(start_date_str, duration_years)
-        save_results(results, top_100_by_year_file)
-    top_100_by_year = load_data(top_100_by_year_file)
-
-    # fetch spotify ids
-    if not os.path.isfile(spotify_ids_file):
-        spotify_ids_per_song = dict()
-        for songs in top_100_by_year.values():
-            for (song, artist), _ in songs:
-                spotify_id = get_spotify_id(spotify_client, song, artist)
-                spotify_ids_per_song[str(spotify_id)] = (song, artist)
-        print(
-            f"Found {found_with_main} songs at first try, {found_with_secondary} songs at second try and did not found {not_found} songs.\nTotal songs found: {found_with_main + found_with_secondary}.")
-        save_results(spotify_ids_per_song, spotify_ids_file)
-    spotify_ids_per_song = load_data(spotify_ids_file)
-
-    # store mapping of songs to spotify ids
-    if not os.path.isfile(dataframe_file):
-        df = create_dataframe(top_100_by_year, spotify_ids_per_song)
-        df.to_csv(dataframe_file, index=False)
+    final_dataset_file = "./dataset.csv"
+    if not os.path.isfile(final_dataset_file):
+        top_100_by_year_file = "./datasets_caches/yearly_top_100.json"
+        spotify_ids_file = "./datasets_caches/spotify_ids.json"
+        dataframe_file = "./datasets_caches/data.csv"
+        million_songs_dataset = pd.read_csv('datasets/spotify_data.csv')
 
 
+        million_songs_dataset = million_songs_dataset.rename(columns={'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
+        spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225', 'deadf5cd6532478693b1c43631b362f5')
 
-    df_2010_2019 = pd.read_csv('./datasets/2010_2019.csv')
-    df_2010_2019["instrumentalness"] = np.nan
-    # match between song names/artists with spotify data
-    unified_dataset = merge_spotify_datasets(
-        [[pd.read_csv('./datasets/30000.csv'), {}], [pd.read_csv('./datasets/114000.csv'),
-                                                     {'artists': 'track_artist',
-                                                      'popularity': 'track_popularity',
-                                                      'album_name': 'track_album_name',
-                                                      'track_genre': 'playlist_genre'}],
-         [pd.read_csv('./datasets/2000_2019.csv'),
-          {'genre': 'playlist_genre', 'artist': 'track_artist', 'song': 'track_name',
-           'popularity': 'track_popularity'}],
-         [df_2010_2019,
-          {'title': 'track_name', 'artist': 'track_artist', 'top genre': 'playlist_genre', 'nrgy': 'energy',
-           'dnce': 'danceability', 'val': 'valence', 'dur': 'duration_ms', 'acous': 'acousticness',
-           'spch': 'speechiness', 'pop': 'track_popularity', 'bpm': 'tempo', 'dB': 'loudness'}]])
+        # fetch song names and artists from billboard 100
+        if not os.path.isfile(top_100_by_year_file):
+            results = fetch_songs_for_period(start_date_str, duration_years)
+            save_results(results, top_100_by_year_file)
+        top_100_by_year = load_data(top_100_by_year_file)
 
-    df1 = pd.read_csv(dataframe_file)
-    matched, unmatched = join_dataframes_on_spotify_id(df1, million_songs_dataset)
+        # fetch spotify ids
+        if not os.path.isfile(spotify_ids_file):
+            spotify_ids_per_song = dict()
+            for songs in top_100_by_year.values():
+                for (song, artist), _ in songs:
+                    spotify_id = get_spotify_id(spotify_client, song, artist)
+                    spotify_ids_per_song[str(spotify_id)] = (song, artist)
+            print(
+                f"Found {found_with_main} songs at first try, {found_with_secondary} songs at second try and did not found {not_found} songs.\nTotal songs found: {found_with_main + found_with_secondary}.")
+            save_results(spotify_ids_per_song, spotify_ids_file)
+        spotify_ids_per_song = load_data(spotify_ids_file)
 
-    df = parallel_match_dataframes(unmatched, unified_dataset)
-    df = join_dataframes_vertically(df, matched)
-    df.to_csv(final_dataset_file, index=False)
+        # store mapping of songs to spotify ids
+        if not os.path.isfile(dataframe_file):
+            df = create_dataframe(top_100_by_year, spotify_ids_per_song)
+            df.to_csv(dataframe_file, index=False)
+
+
+
+        df_2010_2019 = pd.read_csv('./datasets/2010_2019.csv')
+        df_2010_2019["instrumentalness"] = np.nan
+        # match between song names/artists with spotify data
+        unified_dataset = merge_spotify_datasets(
+            [[pd.read_csv('./datasets/30000.csv'), {}], [pd.read_csv('./datasets/114000.csv'),
+                                                         {'artists': 'track_artist',
+                                                          'popularity': 'track_popularity',
+                                                          'album_name': 'track_album_name',
+                                                          'track_genre': 'playlist_genre'}],
+             [pd.read_csv('./datasets/2000_2019.csv'),
+              {'genre': 'playlist_genre', 'artist': 'track_artist', 'song': 'track_name',
+               'popularity': 'track_popularity'}],
+             [df_2010_2019,
+              {'title': 'track_name', 'artist': 'track_artist', 'top genre': 'playlist_genre', 'nrgy': 'energy',
+               'dnce': 'danceability', 'val': 'valence', 'dur': 'duration_ms', 'acous': 'acousticness',
+               'spch': 'speechiness', 'pop': 'track_popularity', 'bpm': 'tempo', 'dB': 'loudness'}]])
+
+        df1 = pd.read_csv(dataframe_file)
+        matched, unmatched = join_dataframes_on_spotify_id(df1, million_songs_dataset)
+
+        df = parallel_match_dataframes(unmatched, unified_dataset)
+        df = join_dataframes_vertically(df, matched)
+        df.to_csv(final_dataset_file, index=False)
+    dataset = pd.read_csv(final_dataset_file)
 
 
 if __name__ == "__main__":
-    # print(len(pd.read_csv('all.csv')))
-    # process_csv('all.csv')
+    # print(len(pd.read_csv('datasets_caches/all.csv')))
+    # process_csv('datasets_caches/all.csv')
     # exit()
     main("2000-01-01", 24)
+
+"""
+Datasets (inside "datasets" folder):
+https://www.kaggle.com/datasets/priyamchoksi/spotify-dataset-114k-songs => 114000.csv
+https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019 => 2000_2019.csv
+https://www.kaggle.com/datasets/muhmores/spotify-top-100-songs-of-20152019 => 2010_2019.csv
+https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks => spotify_data.csv
+https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-songs => 30000.csv
+"""
