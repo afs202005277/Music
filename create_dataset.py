@@ -21,16 +21,13 @@ not_found = 0
 
 def process_csv(file_name):
     try:
-        # Read the CSV file into a DataFrame
         df = pd.read_csv(file_name)
 
-        # Ensure the 'track_album_release_date' column exists
         if 'Year' not in df.columns:
             print("The 'Year' column is not found in the CSV file.")
             return
 
-        # Drop rows with invalid dates
-        df = df.dropna(subset=['Year'])
+        #df = df.dropna(subset=['Year'])
 
         counts_per_year = df['Year'].value_counts().sort_index()
 
@@ -275,13 +272,14 @@ def merge_spotify_datasets(datasets_with_translations):
     return pd.concat(renamed_datasets, axis=0, join='inner', ignore_index=True)
 
 def join_dataframes_on_spotify_id(df1, df2):
-    # Perform an inner join on the 'spotify_id' column
+    # Perform an inner join on the 'Spotify ID' column, ensuring 'genre' is included
     joined_df = pd.merge(df1, df2, on='Spotify ID', how='inner')
 
-    # Filter out rows in df1 that have matched
+    # Filter out rows in df1 that have not matched
     unmatched_df1 = df1[~df1['Spotify ID'].isin(joined_df['Spotify ID'])]
 
     return joined_df, unmatched_df1
+
 
 
 def join_dataframes_vertically(df1, df2):
@@ -306,7 +304,7 @@ def main(start_date_str, duration_years):
         million_songs_dataset = pd.read_csv('datasets/spotify_data.csv')
 
 
-        million_songs_dataset = million_songs_dataset.rename(columns={'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
+        million_songs_dataset = million_songs_dataset.rename(columns={'genre': 'playlist_genre', 'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
         spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225', 'deadf5cd6532478693b1c43631b362f5')
 
         # fetch song names and artists from billboard 100
@@ -356,13 +354,15 @@ def main(start_date_str, duration_years):
 
         df = parallel_match_dataframes(unmatched, unified_dataset)
         df = join_dataframes_vertically(df, matched)
+        df = df.drop('Artist', axis=1)
+        df = df.rename(columns={'playlist_genre': 'genre'})
         df.to_csv(final_dataset_file, index=False)
     dataset = pd.read_csv(final_dataset_file)
 
 
 if __name__ == "__main__":
-    # print(len(pd.read_csv('datasets_caches/all.csv')))
-    # process_csv('datasets_caches/all.csv')
+    # print(len(pd.read_csv('dataset.csv')))
+    # process_csv('dataset.csv')
     # exit()
     main("2000-01-01", 24)
 
