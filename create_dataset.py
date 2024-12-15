@@ -295,14 +295,40 @@ def join_dataframes_vertically(df1, df2):
 
     return vertically_joined_df
 
+def get_songs_to_add(df_hits, df_general):
+    songs_to_add = []
+    # columns={'genre': 'playlist_genre', 'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'}
+    for year in df_hits['Year'].unique():
+        hits_year = df_hits[df_hits['Year'] == year]
+        general_year = df_general[df_general['year'] == year]
+
+        # Exclude songs already in df_hits (based on equality criteria)
+        filtered_songs = general_year[~(
+            general_year['Spotify ID'].isin(hits_year['Spotify ID']) |
+            (
+                general_year['track_artist'].isin(hits_year['track_artist']) &
+                general_year['track_name'].isin(hits_year['Song Name'])
+            )
+        )]
+
+        filtered_songs = filtered_songs.sort_values(by='track_popularity', ascending=True)
+        songs_to_add.extend(filtered_songs.head(100).to_dict('records'))
+
+    final_df = pd.DataFrame(songs_to_add)
+    final_df = final_df.rename(columns={'year': 'Year', 'playlist_genre': 'genre'})
+    final_df['Number of Weeks On Top'] = 0
+
+    return final_df
+
+
 def main(start_date_str, duration_years):
     final_dataset_file = "./dataset.csv"
     if not os.path.isfile(final_dataset_file):
         top_100_by_year_file = "./datasets_caches/yearly_top_100.json"
         spotify_ids_file = "./datasets_caches/spotify_ids.json"
         dataframe_file = "./datasets_caches/data.csv"
+        final_hits_dataset_file = "./datasets_caches/hits.csv"
         million_songs_dataset = pd.read_csv('datasets/spotify_data.csv')
-
 
         million_songs_dataset = million_songs_dataset.rename(columns={'genre': 'playlist_genre', 'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
         spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225', 'deadf5cd6532478693b1c43631b362f5')
@@ -356,15 +382,19 @@ def main(start_date_str, duration_years):
         df = join_dataframes_vertically(df, matched)
         df = df.drop('Artist', axis=1)
         df = df.rename(columns={'playlist_genre': 'genre'})
-        df.to_csv(final_dataset_file, index=False)
+        df.to_csv(final_hits_dataset_file, index=False)
+
+        songs_to_add_non_hits = get_songs_to_add(df, million_songs_dataset)
+        final = join_dataframes_vertically(df, songs_to_add_non_hits)
+        final.to_csv(final_dataset_file, index=False)
     dataset = pd.read_csv(final_dataset_file)
+    print()
 
 
 if __name__ == "__main__":
-    # print(len(pd.read_csv('dataset.csv')))
-    # process_csv('dataset.csv')
-    # exit()
     main("2000-01-01", 24)
+    print(len(pd.read_csv('dataset.csv')))
+    process_csv('dataset.csv')
 
 """
 Datasets (inside "datasets" folder):
