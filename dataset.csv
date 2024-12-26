@@ -339,11 +339,11 @@ Year,Number of Weeks On Top,Spotify ID,track_name,track_artist,track_popularity,
 2010,19,7rojor07Wzc7w3zXOxex80,Halfway Gone,Lifehouse,56.0,grunge,0.543,0.919,-4.831,0.0415,0.000441,0.0,0.498,125.017,195306.0
 2011,49,4OSBTYWVwsQhGLF9NHvIbR,Rolling in the Deep,Adele,75.0,pop,0.729,0.756,-5.119,0.0294,0.131,0.0,0.522,104.945,228293.0
 2011,39,7mitXLIMCflkhZiD34uEQI,Party Rock Anthem,LMFAO,67.0,pop,0.75,0.727,-4.21,0.142,0.0189,0.0,0.359,129.993,262173.0
-2011,32,,Forget You,CeeLo Green,69.0,atl hip hop,70.0,88.0,-4.0,6.0,13.0,,77.0,127.0,223.0
+2011,32,,Forget You,CeeLo Green,69.0,atl hip hop,0.7,0.88,-4.0,0.06,0.13,,0.77,127.0,223.0
 2011,31,3lXbHd0EoryoQh3vpevNEP,Firework,Katy Perry,64.0,pop,0.638,0.832,-5.039,0.049,0.141,0.0,0.648,124.071,227893.0
 2011,31,3JA9Jsuxr4xgHXEawAdCp4,Just Can’t Get Enough,The Black Eyed Peas,70.0,pop,0.659,0.628,-8.685,0.179,0.186,0.0,0.262,94.05,219427.0
 2011,30,4aY0tZIaboefmkBEsjAovI,If I Die Young,The Band Perry,65.0,country,0.606,0.497,-6.611,0.0277,0.348,0.0,0.362,130.739,222773.0
-2011,29,49kjlZP49LMD1MrrcvXDET,For the First Time,The Script,66.0,celtic rock,40.0,63.0,-5.0,3.0,3.0,,36.0,174.0,253.0
+2011,29,49kjlZP49LMD1MrrcvXDET,For the First Time,The Script,66.0,celtic rock,0.4,0.63,-5.0,0.03,0.03,,0.36,174.0,253.0
 2011,29,7zIIyVBJvbOrJlCuj7t24z,E.T.,Katy Perry,65.0,pop,0.603,0.872,-5.404,0.0792,0.0213,0.0,0.691,150.104,206373.0
 2011,27,47Slg6LuqLaX0VodpSCvPt,Just The Way You Are,Bruno Mars,20.0,pop,0.637,0.843,-5.413,0.0432,0.0151,0.0,0.434,109.012,220733.0
 2011,27,5ZVGvay4xwgXMnQWffNYeU,Dirt Road Anthem,Jason Aldean,53.0,country,0.678,0.739,-5.068,0.0352,0.32,2.36e-06,0.658,127.037,229413.0
@@ -402,7 +402,7 @@ Year,Number of Weeks On Top,Spotify ID,track_name,track_artist,track_popularity,
 2012,21,5mFMb5OHI3cN0UjITVztCj,Rumour Has It,Adele,67.0,british,0.612,0.749,-5.014,0.0446,0.615,0.0,0.574,120.052,223266.0
 2012,20,6GyFP1nfCDB8lbD2bG0Hq9,Midnight City,M83,71.0,pop,0.526,0.712,-6.525,0.0356,0.0161,0.0,0.32,105.009,241440.0
 2012,20,5InWRmnfgjVwQWoXHNBATu,Want U Back,Cher Lloyd,62.0,pop,0.696,0.893,-2.963,0.076,0.0662,0.0,0.573,97.954,214013.0
-2012,20,5hJFhO9dvhJoDvUZZ9iWSw,Adorn,Miguel,72.0,dance pop,63.0,58.0,-6.0,18.0,5.0,,24.0,179.0,193.0
+2012,20,5hJFhO9dvhJoDvUZZ9iWSw,Adorn,Miguel,72.0,dance pop,0.63,0.58,-6.0,0.18,0.05,,0.24,179.0,193.0
 2012,19,2fQxE0jVrjNMT9oJAXtSJR,Domino,Jessie J,69.0,pop,0.758,0.554,-4.567,0.0341,0.0116,0.0,0.783,126.986,231840.0
 2013,52,62yJjFtgkhUrXktIoSjgP2,Radioactive,Imagine Dragons,16.0,pop,0.473,0.777,-3.698,0.059,0.119,7.87e-05,0.21,136.249,186813.0
 2013,39,22skzmqfdWrjJylampe0kt,Can't Hold Us - feat. Ray Dalton,Macklemore & Ryan Lewis,83.0,pop,0.641,0.922,-4.457,0.0786,0.0291,0.0,0.847,146.078,258343.0
@@ -532,7 +532,7 @@ Year,Number of Weeks On Top,Spotify ID,track_name,track_artist,track_popularity,
 2017,20,58w5J5yNWeGZ7a4cM1rO7Y,Swalla (feat. Nicki Minaj & Ty Dolla $ign),Jason Derulo,76.0,pop,0.696,0.817,-3.862,0.109,0.075,0.0,0.782,98.064,216409.0
 2017,20,126oeltvIg79HHP4yAi4rq,Now Or Never,Halsey,4.0,r&b,0.66,0.575,-4.934,0.0367,0.115,1.59e-06,0.477,110.091,214802.0
 2017,20,1RouRzlg8OKFeqc6LvdxmB,Felices los 4,Maluma,76.0,latin,0.766,0.756,-5.861,0.132,0.213,0.0,0.716,94.027,230000.0
-2017,19,4cxMGhkinTocPSVVKWIw0d,Losin Control,Russ,79.0,hawaiian hip hop,76.0,25.0,-7.0,14.0,52.0,,21.0,97.0,238.0
+2017,19,4cxMGhkinTocPSVVKWIw0d,Losin Control,Russ,79.0,hawaiian hip hop,0.76,0.25,-7.0,0.14,0.52,,0.21,97.0,238.0
 2018,41,4MagTPnkPiDuIa4P8GtW1b,I Like Me Better,Lauv,83.0,pop,0.752,0.505,-7.621,0.253,0.535,2.55e-06,0.419,91.97,197437.0
 2018,39,3swc6WTsr7rl9DqQKQA55C,Psycho (feat. Ty Dolla $ign),Post Malone,83.0,r&b,0.75,0.56,-8.094,0.105,0.546,0.0,0.459,140.06,221440.0
 2018,35,4eWQlBRaTjPPUlzacqEeoQ,Never Be the Same,Camila Cabello,66.0,r&b,0.643,0.709,-4.343,0.0733,0.145,0.000449,0.264,129.961,227088.0
@@ -543,7 +543,7 @@ Year,Number of Weeks On Top,Spotify ID,track_name,track_artist,track_popularity,
 2018,27,0e7ipj03S05BNilyu5bRzt,rockstar,Post Malone,14.0,rap,0.58,0.531,-6.631,0.0776,0.128,0.000127,0.141,159.786,218320.0
 2018,23,3T9CfDxFYqZWSKxd0BhZrb,Wait,Maroon 5,7.0,pop,0.659,0.604,-5.084,0.0542,0.0889,0.0,0.407,126.135,190643.0
 2018,23,6Up545NUflOiXo8cEraH49,You Say,Lauren Daigle,21.0,pop,0.494,0.637,-6.381,0.0333,0.669,0.0,0.1,147.924,274693.0
-2018,20,2TXtN9MoV308Y0z1HvyTfV,You Make It Easy,Jason Aldean,74.0,contemporary country,38.0,57.0,-5.0,3.0,14.0,,41.0,132.0,197.0
+2018,20,2TXtN9MoV308Y0z1HvyTfV,You Make It Easy,Jason Aldean,74.0,contemporary country,0.38,0.57,-5.0,0.03,0.14,,0.41,132.0,197.0
 2018,20,6dbSBQXCctYSVryynHXaZ4,Freaky Friday (feat. Chris Brown),Lil Dicky,77.0,rap,0.755,0.599,-5.042,0.224,0.147,0.0,0.755,133.123,216632.0
 2018,20,4VXIryQMWpIdGgYR4TrjT1,All Girls Are The Same,Juice WRLD,3.0,rap,0.673,0.449,-9.727,0.298,0.169,0.00115,0.216,161.925,169295.0
 2018,20,43VXG87ajppI8mO1Mxo8vu,FEFE (feat. Nicki Minaj & Murda Beatz),6ix9ine,15.0,latin,0.931,0.387,-9.127,0.412,0.088,0.0,0.376,125.978,179405.0
