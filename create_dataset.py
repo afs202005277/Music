@@ -356,6 +356,17 @@ def main(start_date_str, duration_years):
         df = join_dataframes_vertically(df, matched)
         df = df.drop('Artist', axis=1)
         df = df.rename(columns={'playlist_genre': 'genre'})
+        
+        #Fix scales
+        
+        cols_to_fix = ['danceability', 'energy', 'speechiness', 'acousticness', 'speechiness', 'valence']
+        
+        for col in cols_to_fix:
+            if col in df.columns:
+                # Fix only rows where the value is greater than 1
+                df[col] = df[col].apply(lambda x: x / 100 if x > 1 else x)
+        
+        
         df.to_csv(final_dataset_file, index=False)
     dataset = pd.read_csv(final_dataset_file)
 
