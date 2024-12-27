@@ -27,7 +27,7 @@ def process_csv(file_name):
             print("The 'Year' column is not found in the CSV file.")
             return
 
-        #df = df.dropna(subset=['Year'])
+        # df = df.dropna(subset=['Year'])
 
         counts_per_year = df['Year'].value_counts().sort_index()
 
@@ -271,6 +271,7 @@ def merge_spotify_datasets(datasets_with_translations):
         renamed_datasets.append(dataset.rename(columns=col_renaming))
     return pd.concat(renamed_datasets, axis=0, join='inner', ignore_index=True)
 
+
 def join_dataframes_on_spotify_id(df1, df2):
     # Perform an inner join on the 'Spotify ID' column, ensuring 'genre' is included
     joined_df = pd.merge(df1, df2, on='Spotify ID', how='inner')
@@ -279,7 +280,6 @@ def join_dataframes_on_spotify_id(df1, df2):
     unmatched_df1 = df1[~df1['Spotify ID'].isin(joined_df['Spotify ID'])]
 
     return joined_df, unmatched_df1
-
 
 
 def join_dataframes_vertically(df1, df2):
@@ -295,6 +295,7 @@ def join_dataframes_vertically(df1, df2):
 
     return vertically_joined_df
 
+
 def get_songs_to_add(df_hits, df_general):
     songs_to_add = []
     # columns={'genre': 'playlist_genre', 'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'}
@@ -304,11 +305,11 @@ def get_songs_to_add(df_hits, df_general):
 
         # Exclude songs already in df_hits (based on equality criteria)
         filtered_songs = general_year[~(
-            general_year['Spotify ID'].isin(hits_year['Spotify ID']) |
-            (
-                general_year['track_artist'].isin(hits_year['track_artist']) &
-                general_year['track_name'].isin(hits_year['Song Name'])
-            )
+                general_year['Spotify ID'].isin(hits_year['Spotify ID']) |
+                (
+                        general_year['track_artist'].isin(hits_year['track_artist']) &
+                        general_year['track_name'].isin(hits_year['Song Name'])
+                )
         )]
 
         filtered_songs = filtered_songs.sort_values(by='track_popularity', ascending=True)
@@ -330,8 +331,11 @@ def main(start_date_str, duration_years):
         final_hits_dataset_file = "./datasets_caches/hits.csv"
         million_songs_dataset = pd.read_csv('datasets/spotify_data.csv')
 
-        million_songs_dataset = million_songs_dataset.rename(columns={'genre': 'playlist_genre', 'artist_name': 'track_artist', 'popularity': 'track_popularity', 'track_id': 'Spotify ID'})
-        spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225', 'deadf5cd6532478693b1c43631b362f5')
+        million_songs_dataset = million_songs_dataset.rename(
+            columns={'genre': 'playlist_genre', 'artist_name': 'track_artist', 'popularity': 'track_popularity',
+                     'track_id': 'Spotify ID'})
+        spotify_client = initialize_spotify_client('76efa3b6bd924968a46336ceb7502225',
+                                                   'deadf5cd6532478693b1c43631b362f5')
 
         # fetch song names and artists from billboard 100
         if not os.path.isfile(top_100_by_year_file):
@@ -355,8 +359,6 @@ def main(start_date_str, duration_years):
         if not os.path.isfile(dataframe_file):
             df = create_dataframe(top_100_by_year, spotify_ids_per_song)
             df.to_csv(dataframe_file, index=False)
-
-
 
         df_2010_2019 = pd.read_csv('./datasets/2010_2019.csv')
         df_2010_2019["instrumentalness"] = np.nan
@@ -388,11 +390,13 @@ def main(start_date_str, duration_years):
         for col in cols_to_fix:
             df[col] = df[col].apply(lambda x: x / 100 if x > 1 else x)
 
-
         df.to_csv(final_hits_dataset_file, index=False)
 
         songs_to_add_non_hits = get_songs_to_add(df, million_songs_dataset)
         final = join_dataframes_vertically(df, songs_to_add_non_hits)
+
+        final = final[~((final['track_popularity'] == 0) & (final['Number of Weeks On Top'] > 0))]
+
         final.to_csv(final_dataset_file, index=False)
     dataset = pd.read_csv(final_dataset_file)
     print()

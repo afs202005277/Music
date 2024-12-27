@@ -4,13 +4,15 @@ import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report, accuracy_score
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils import resample
 
 models = {
     "RandomForest": {
-        "model": RandomForestClassifier(),
+        "model": RandomForestClassifier(random_state=42),
         "params": {
             "n_estimators": [50, 100, 200],
             "max_depth": [None, 10, 20],
@@ -18,25 +20,41 @@ models = {
         }
     },
     "GradientBoosting": {
-        "model": GradientBoostingClassifier(),
+        "model": GradientBoostingClassifier(random_state=42),
         "params": {
-            "n_estimators": [50, 100, 200],
+            "n_estimators": [50, 100, 200, 500],
             "learning_rate": [0.01, 0.1, 0.2],
             "max_depth": [3, 5, 10]
         }
     },
     "LogisticRegression": {
-        "model": LogisticRegression(max_iter=500),
+        "model": LogisticRegression(max_iter=500, random_state=42),
         "params": {
             "C": [0.01, 0.1, 1, 10],
             "penalty": ["l2"]
         }
     },
     "SVM": {
-        "model": SVC(),
+        "model": SVC(random_state=42),
         "params": {
             "C": [0.1, 1, 10],
             "kernel": ["linear", "rbf"]
+        }
+    },
+    'KNN': {
+        "model": KNeighborsClassifier(),
+        'params': {
+            'n_neighbors': [3, 5, 7],
+            'weights': ['uniform', 'distance'],
+            'p': [1, 2]  # 1 for Manhattan, 2 for Euclidean
+        }
+    },
+    'DT': {
+        "model": DecisionTreeClassifier(random_state=42),
+        'params': {
+            'criterion': ['gini', 'entropy'],
+            'max_depth': [5, 7, 9],
+            'min_samples_split': [2, 5, 10]
         }
     }
 }
@@ -58,7 +76,7 @@ def sliding_window_split(data, start_year, window_size=5):
 def main(window_size):
     data = pd.read_csv("dataset.csv")
     data['isHit'] = data['Number of Weeks On Top'] > 0
-    data = data.drop(columns=["Spotify ID", 'Number of Weeks On Top'])
+    data = data.drop(columns=["Spotify ID"])
     data = data.dropna()
 
     # Track results
@@ -81,7 +99,7 @@ def main(window_size):
         X_train, y_train = augment_data(X_train, y_train)
 
         for model_name, model_info in models.items():
-            grid = GridSearchCV(model_info["model"], model_info["params"], cv=3, scoring='accuracy')
+            grid = GridSearchCV(model_info["model"], model_info["params"], cv=3, scoring='accuracy', n_jobs=-1)
             grid.fit(X_train, y_train)
 
             best_model = grid.best_estimator_
@@ -97,6 +115,7 @@ def main(window_size):
                 "Accuracy": acc,
                 "Classification Report": report
             })
+            print(f"Finished model {model_name} in year {start_year}")
 
         for result in results:
             print(f"Sliding Window Start Year: {result['Start Year']}")
@@ -108,4 +127,5 @@ def main(window_size):
         json.dump(results, f, indent=4)
 
 
-main(5)
+if __name__ == '__main__':
+    main(5)
