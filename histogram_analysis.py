@@ -7,11 +7,12 @@ import os
 
 # Load the dataset
 data = pd.read_csv('dataset.csv')
+data = data[data['Number of Weeks On Top'] > 0]
 
 # Drop unnecessary columns
-data.drop(['genre', 'track_name', 'Spotify ID'], axis=1, inplace=True)
+data.drop(['genre', 'Spotify ID'], axis=1, inplace=True)
 
-numerical_features = data.columns.drop(['Song Name', 'track_artist', 'Year'])
+numerical_features = data.columns.drop(['track_name', 'track_artist', 'Year'])
 
 print("\nPlotting correlation heatmap...")
 plt.figure(figsize=(10, 8))
@@ -30,7 +31,7 @@ for feature in numerical_features:
     print(data[feature].mean())
     
     # Calculate Z-scores for the feature
-    data[f'zscore_{feature}'] = zscore(data[feature])
+    data[f'zscore_{feature}'] = abs(zscore(data[feature]))
     
     # Plot histogram
     plt.figure(figsize=(8, 6))
@@ -41,7 +42,7 @@ for feature in numerical_features:
     plt.savefig(f"hist_analysis/histogram_{feature}.png")
     plt.close()
     
-    top_deviations = data.nlargest(10, f'zscore_{feature}')[['Year', 'Song Name', 'track_artist', feature, f'zscore_{feature}']]
+    top_deviations = data.nlargest(10, f'zscore_{feature}')[['Year', 'track_name', 'track_artist', feature, f'zscore_{feature}']]
     results.append({
         'feature': feature,
         'top_songs': top_deviations
