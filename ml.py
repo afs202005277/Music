@@ -1,11 +1,9 @@
 import joblib
 import time
 
-import numpy as np
 import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
 from sklearn.svm import SVC
@@ -29,13 +27,6 @@ models = {
             "n_estimators": [50, 100, 200, 500],
             "learning_rate": [0.01, 0.1, 0.2],
             "max_depth": [3, 5, 10]
-        }
-    },
-    "LogisticRegression": {
-        "model": LogisticRegression(max_iter=500, random_state=42),
-        "params": {
-            "C": [0.01, 0.1, 1, 10],
-            "penalty": ["l2"]
         }
     },
     "SVM": {
@@ -70,20 +61,6 @@ scalers = {
     "RobustScaler": RobustScaler(),
     "MaxAbsScaler": MaxAbsScaler()
 }
-
-
-def convert_to_serializable(obj):
-    if isinstance(obj, np.integer):
-        return int(obj)
-    elif isinstance(obj, np.floating):
-        return float(obj)
-    elif isinstance(obj, np.ndarray):
-        return obj.tolist()
-    elif isinstance(obj, pd.DataFrame):
-        return obj.to_dict()
-    elif isinstance(obj, pd.Series):
-        return obj.to_list()
-    return obj
 
 
 def augment_data(X, y):
