@@ -104,7 +104,7 @@ def main(window_size, save_df_file):
     data['artist_id'], artist_mapping = pd.factorize(data['track_artist'])
     data['genre_id'], genre_mapping = pd.factorize(data['genre'])
     data['isHit'] = data['Number of Weeks On Top'] > 0
-    data = data.drop(columns=["Spotify ID", 'track_name', 'track_artist', 'genre'])
+    data = data.drop(columns=["Spotify ID", 'track_name', 'track_artist', 'genre', 'Number of Weeks On Top', 'track_popularity'])
     data = data.dropna()
 
     reverse_mapping_artist = {index: artist for index, artist in enumerate(artist_mapping)}
