@@ -10,8 +10,19 @@ from sklearn.metrics import classification_report, accuracy_score, precision_sco
     confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils import resample
+from xgboost.sklearn import XGBClassifier  # Use sklearn wrapper for XGBoost
 
 models = {
+    "XGBoost": {
+        "model": XGBClassifier(random_state=42, use_label_encoder=False, eval_metric='logloss'),
+        "params": {
+            "n_estimators": [50, 100, 200],
+            "learning_rate": [0.01, 0.1, 0.2],
+            "max_depth": [3, 5, 10],
+            "subsample": [0.6, 0.8, 1.0],
+            "colsample_bytree": [0.6, 0.8, 1.0]
+        }
+    },
     "RandomForest": {
         "model": RandomForestClassifier(random_state=42),
         "params": {
@@ -73,7 +84,8 @@ def main(window_size, save_df_file):
     data['artist_id'], artist_mapping = pd.factorize(data['track_artist'])
     data['genre_id'], genre_mapping = pd.factorize(data['genre'])
     data['isHit'] = data['Number of Weeks On Top'] > 0
-    data = data.drop(columns=["Spotify ID", 'track_name', 'track_artist', 'genre', 'Number of Weeks On Top', 'track_popularity'])
+    data = data.drop(
+        columns=["Spotify ID", 'track_name', 'track_artist', 'genre', 'Number of Weeks On Top', 'track_popularity'])
     data = data.dropna()
 
     reverse_mapping_artist = {index: artist for index, artist in enumerate(artist_mapping)}
