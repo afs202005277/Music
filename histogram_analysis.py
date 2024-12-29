@@ -1,13 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.ensemble import IsolationForest
 from scipy.stats import zscore
-import os
 
 # Load the dataset
 data = pd.read_csv('dataset.csv')
 data = data[data['Number of Weeks On Top'] > 0]
+plt.rcParams.update({'font.size': 13})
 
 # Drop unnecessary columns
 data.drop(['genre', 'Spotify ID'], axis=1, inplace=True)
@@ -15,7 +14,7 @@ data.drop(['genre', 'Spotify ID'], axis=1, inplace=True)
 numerical_features = data.columns.drop(['track_name', 'track_artist', 'Year'])
 
 print("\nPlotting correlation heatmap...")
-plt.figure(figsize=(10, 8))
+plt.figure()
 correlation_matrix = data[numerical_features].corr()
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Heatmap")
