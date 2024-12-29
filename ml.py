@@ -6,7 +6,6 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
-from sklearn.svm import SVC
 from sklearn.metrics import classification_report, accuracy_score, precision_score, recall_score, f1_score, \
     confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
@@ -27,13 +26,6 @@ models = {
             "n_estimators": [50, 100, 200, 500],
             "learning_rate": [0.01, 0.1, 0.2],
             "max_depth": [3, 5, 10]
-        }
-    },
-    "SVM": {
-        "model": SVC(random_state=42),
-        "params": {
-            "C": [0.1, 1, 10],
-            "kernel": ["linear", "rbf"]
         }
     },
     'KNN': {
