@@ -1,7 +1,13 @@
 import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
+
+font = {'weight' : 'normal',
+        'size'   : 18}
+
+matplotlib.rc('font', **font)
 
 def load_and_filter_data(filepath):
     """
@@ -90,7 +96,7 @@ def plot_artist_variability(data, artists, features, reference_values, output_fo
                                        var_name='Feature', value_name='Value')
 
         # Create a boxplot
-        plt.figure(figsize=(10, 6))
+        plt.figure(figsize=(10, 8))
         sns.boxplot(data=melted_data, x='Feature', y='Value')
 
         # Add normalized reference values as horizontal lines

@@ -1,7 +1,9 @@
 import joblib
 import time
 
+import matplotlib
 import pandas as pd
+from matplotlib import pyplot as plt
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -11,6 +13,11 @@ from sklearn.metrics import classification_report, accuracy_score, precision_sco
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils import resample
 from xgboost.sklearn import XGBClassifier  # Use sklearn wrapper for XGBoost
+
+font = {'weight' : 'normal',
+        'size'   : 18}
+
+matplotlib.rc('font', **font)
 
 models = {
     "XGBoost": {
@@ -88,8 +95,8 @@ def main(window_size, save_df_file):
         columns=["Spotify ID", 'track_name', 'track_artist', 'genre', 'Number of Weeks On Top', 'track_popularity'])
     data = data.dropna()
 
-    reverse_mapping_artist = {index: artist for index, artist in enumerate(artist_mapping)}
-    reverse_mapping_genre = {index: genre for index, genre in enumerate(genre_mapping)}
+    # reverse_mapping_artist = {index: artist for index, artist in enumerate(artist_mapping)}
+    # reverse_mapping_genre = {index: genre for index, genre in enumerate(genre_mapping)}
 
     # Track results
     results = []
@@ -168,5 +175,117 @@ def run():
     pd.DataFrame(df_results).to_csv('unified_df.csv', index=False)
 
 
+def get_feature_importances(unified_df, feature_names):
+    unified_df = unified_df.sort_values(by='Accuracy', ascending=False)
+    rf_df = unified_df[unified_df['Model'] == 'RandomForest']
+
+    # Get unique combinations of Start Year and Window Size
+    combinations = rf_df[['Start Year', 'Window Size']].drop_duplicates()
+
+    feature_importances = []
+
+    for _, row in combinations.iterrows():
+        start_year = row['Start Year']
+        window_size = row['Window Size']
+
+        # Filter rows for the current combination of Start Year and Window Size
+        subset = rf_df[(rf_df['Start Year'] == start_year) &
+                       (rf_df['Window Size'] == window_size)]
+
+        # Get the best model for this combination
+        best_model_row = subset.iloc[0]
+        model_name = best_model_row['Model']
+        scaler_name = best_model_row['Scaler']
+
+        model_file_path = f"models/{model_name}_{scaler_name}_{start_year}_{window_size}.joblib"
+
+        try:
+            # Load the model
+            model = joblib.load(model_file_path)
+
+            # Extract feature importances (assuming RandomForest)
+            if hasattr(model, 'feature_importances_'):
+                importances = model.feature_importances_
+                importance_dict = {
+                    'Start Year': start_year,
+                    'Window Size': window_size
+                }
+                # Add feature importances with labels
+                importance_dict.update({feature: importance for feature, importance in zip(feature_names, importances)})
+                feature_importances.append(importance_dict)
+            else:
+                print(f"Model at {model_file_path} does not have feature_importances_ attribute.")
+        except Exception as e:
+            print(f"Failed to load model from {model_file_path}: {e}")
+
+    # Convert results to a dataframe
+    feature_importances_df = pd.DataFrame(feature_importances)
+    return feature_importances_df
+
+
+def plot_average_feature_importances(feature_importances_df, feature_names):
+    # Calculate average feature importances
+    feature_columns = [col for col in feature_importances_df.columns if col in feature_names]
+    averages = feature_importances_df[feature_columns].mean()
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    averages.plot(kind='bar', color='skyblue')
+    plt.title('Average Feature Importances')
+    plt.xlabel('Features')
+    plt.ylabel('Importance')
+    plt.tight_layout()
+    plt.savefig('feature_importances/average_feature_importances.png')
+    plt.show()
+
+
+# Function to detect outliers in feature importances by year
+def detect_outlier_years(feature_importances_df, feature_names):
+    from scipy.stats import zscore
+
+    # Calculate z-scores for feature importances grouped by year
+    feature_columns = [col for col in feature_importances_df.columns if col in feature_names]
+    z_scores = feature_importances_df.groupby('Start Year')[feature_columns].transform(zscore)
+
+    # Find years with any z-scores beyond a threshold (e.g., > 3 or < -3)
+    outlier_mask = (z_scores.abs() > 3).any(axis=1)
+    outlier_years = feature_importances_df.loc[outlier_mask, 'Start Year'].unique()
+
+    return outlier_years
+
+
+def plot_feature_importance_variation(feature_importances_df, feature_names, window_sizes):
+    # Filter for the specified window sizes
+    filtered_df = feature_importances_df[feature_importances_df['Window Size'].isin(window_sizes)]
+
+    for window_size in window_sizes:
+        subset = filtered_df[filtered_df['Window Size'] == window_size]
+
+        # Filter out non-integer years
+        subset = subset[subset['Start Year'] == subset['Start Year'].astype(int)]
+        subset = subset.sort_values(by='Start Year')
+
+        # Plot
+        plt.figure(figsize=(12, 8))
+        for feature in feature_names:
+            plt.plot(subset['Start Year'], subset[feature], label=f"{feature}")
+
+        plt.title(f'Feature Importance Variation Over Years (Window Size={window_size})')
+        plt.xlabel('Start Year')
+        plt.ylabel('Feature Importance')
+        plt.legend(loc='right')
+        plt.tight_layout()
+        plt.savefig(f'feature_importances/evolution_{window_size}.png')
+        plt.show()
+
+
 if __name__ == '__main__':
-    run()
+    # run()
+    feature_names = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness',
+                     'instrumentalness', 'valence', 'tempo', 'duration_ms', 'artist_id',
+                     'genre_id']
+    feature_importances = get_feature_importances(pd.read_csv("unified_df.csv"),
+                                                  feature_names)
+    feature_importances.to_csv('feature_importances/feature_importances.csv', index=False)
+    plot_average_feature_importances(feature_importances, feature_names)
+    plot_feature_importance_variation(feature_importances, feature_names, [5, 10, 15])
