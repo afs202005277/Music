@@ -90,16 +90,13 @@ def plot_artist_variability(data, artists, features, reference_values, output_fo
     for artist in artists:
         artist_data = data[data['track_artist'] == artist]
 
-        # Melt the data for easier plotting
         melted_data = artist_data.melt(id_vars=['track_name'],
                                        value_vars=features,
                                        var_name='Feature', value_name='Value')
 
-        # Create a boxplot
         plt.figure(figsize=(10, 8))
         sns.boxplot(data=melted_data, x='Feature', y='Value')
 
-        # Add normalized reference values as horizontal lines
         for i, feature in enumerate(features):
             ref_value = reference_values[i]
             x_position = features.index(feature)
@@ -112,7 +109,6 @@ def plot_artist_variability(data, artists, features, reference_values, output_fo
         plt.xticks(rotation=45)
         plt.tight_layout()
 
-        # Save each plot
         plt.savefig(output_folder + f"{artist.replace(' ', '_')}_variability_plot.png")
         plt.show()
 
@@ -125,19 +121,15 @@ def main():
     features_to_normalize = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness',
                              'instrumentalness', 'valence', 'tempo', 'duration_ms']
 
-    # Load and process data
     data = load_and_filter_data(dataset_path)
     top_artists = get_top_artists(data)
 
-    # Compute averages and save comparison
     comparison_df = compute_artist_and_overall_averages(data, top_artists)
     save_comparison_to_csv(comparison_df, output_folder + 'artist_comparison.csv')
 
-    # Normalize features
     data, scaler = normalize_features(data, features_to_normalize)
     normalized_reference = scaler.transform(comparison_df.loc['Reference', features_to_normalize].values.reshape(1, -1))[0]
 
-    # Plot variability
     plot_artist_variability(data, top_artists, features_to_normalize, normalized_reference, output_folder)
 
     print("Analysis complete. Plots and table saved in the \"artist_analysis\" folder.")
