@@ -4,6 +4,7 @@ import seaborn as sns
 
 # Load the dataset
 data = pd.read_csv('dataset.csv')
+data = data[data['Number of Weeks On Top'] > 0]
 
 # Display basic information about the dataset
 print("Dataset Information:\n")
