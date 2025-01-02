@@ -1,0 +1,1751 @@
+Start Year,Window Size,Scaler,Model,Best Params,Accuracy,Precision,Recall,F1 Score,Classification Report,Confusion Matrix
+2000,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,NoScaling,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.9015544041450777,1.0,0.7956989247311828,0.8862275449101796,"              precision    recall  f1-score   support
+
+       False       0.84      1.00      0.91       100
+        True       1.00      0.80      0.89        93
+
+    accuracy                           0.90       193
+   macro avg       0.92      0.90      0.90       193
+weighted avg       0.92      0.90      0.90       193
+","[[100   0]
+ [ 19  74]]"
+2000,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,StandardScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9896373056994818,1.0,0.978494623655914,0.9891304347826086,"              precision    recall  f1-score   support
+
+       False       0.98      1.00      0.99       100
+        True       1.00      0.98      0.99        93
+
+    accuracy                           0.99       193
+   macro avg       0.99      0.99      0.99       193
+weighted avg       0.99      0.99      0.99       193
+","[[100   0]
+ [  2  91]]"
+2000,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MinMaxScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,RobustScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9792746113989638,0.989010989010989,0.967741935483871,0.9782608695652174,"              precision    recall  f1-score   support
+
+       False       0.97      0.99      0.98       100
+        True       0.99      0.97      0.98        93
+
+    accuracy                           0.98       193
+   macro avg       0.98      0.98      0.98       193
+weighted avg       0.98      0.98      0.98       193
+","[[99  1]
+ [ 3 90]]"
+2000,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MaxAbsScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2000,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,NoScaling,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.9119170984455959,1.0,0.8172043010752689,0.8994082840236687,"              precision    recall  f1-score   support
+
+       False       0.85      1.00      0.92       100
+        True       1.00      0.82      0.90        93
+
+    accuracy                           0.91       193
+   macro avg       0.93      0.91      0.91       193
+weighted avg       0.92      0.91      0.91       193
+","[[100   0]
+ [ 17  76]]"
+2001,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,StandardScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.9948186528497409,0.9893617021276596,1.0,0.9946524064171123,"              precision    recall  f1-score   support
+
+       False       1.00      0.99      0.99       100
+        True       0.99      1.00      0.99        93
+
+    accuracy                           0.99       193
+   macro avg       0.99      0.99      0.99       193
+weighted avg       0.99      0.99      0.99       193
+","[[99  1]
+ [ 0 93]]"
+2001,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MinMaxScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,RobustScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9844559585492227,1.0,0.967741935483871,0.9836065573770492,"              precision    recall  f1-score   support
+
+       False       0.97      1.00      0.99       100
+        True       1.00      0.97      0.98        93
+
+    accuracy                           0.98       193
+   macro avg       0.99      0.98      0.98       193
+weighted avg       0.98      0.98      0.98       193
+","[[100   0]
+ [  3  90]]"
+2001,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MaxAbsScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2001,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        93
+
+    accuracy                           1.00       193
+   macro avg       1.00      1.00      1.00       193
+weighted avg       1.00      1.00      1.00       193
+","[[100   0]
+ [  0  93]]"
+2002,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,NoScaling,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.882051282051282,0.9736842105263158,0.7789473684210526,0.8654970760233918,"              precision    recall  f1-score   support
+
+       False       0.82      0.98      0.89       100
+        True       0.97      0.78      0.87        95
+
+    accuracy                           0.88       195
+   macro avg       0.90      0.88      0.88       195
+weighted avg       0.90      0.88      0.88       195
+","[[98  2]
+ [21 74]]"
+2002,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,StandardScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.9897435897435898,1.0,0.9789473684210527,0.9893617021276596,"              precision    recall  f1-score   support
+
+       False       0.98      1.00      0.99       100
+        True       1.00      0.98      0.99        95
+
+    accuracy                           0.99       195
+   macro avg       0.99      0.99      0.99       195
+weighted avg       0.99      0.99      0.99       195
+","[[100   0]
+ [  2  93]]"
+2002,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MinMaxScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,RobustScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9897435897435898,1.0,0.9789473684210527,0.9893617021276596,"              precision    recall  f1-score   support
+
+       False       0.98      1.00      0.99       100
+        True       1.00      0.98      0.99        95
+
+    accuracy                           0.99       195
+   macro avg       0.99      0.99      0.99       195
+weighted avg       0.99      0.99      0.99       195
+","[[100   0]
+ [  2  93]]"
+2002,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MaxAbsScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2002,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        95
+
+    accuracy                           1.00       195
+   macro avg       1.00      1.00      1.00       195
+weighted avg       1.00      1.00      1.00       195
+","[[100   0]
+ [  0  95]]"
+2003,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,NoScaling,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9382022471910112,1.0,0.8589743589743589,0.9241379310344827,"              precision    recall  f1-score   support
+
+       False       0.90      1.00      0.95       100
+        True       1.00      0.86      0.92        78
+
+    accuracy                           0.94       178
+   macro avg       0.95      0.93      0.94       178
+weighted avg       0.94      0.94      0.94       178
+","[[100   0]
+ [ 11  67]]"
+2003,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,StandardScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.9719101123595506,1.0,0.9358974358974359,0.9668874172185431,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.94      0.97        78
+
+    accuracy                           0.97       178
+   macro avg       0.98      0.97      0.97       178
+weighted avg       0.97      0.97      0.97       178
+","[[100   0]
+ [  5  73]]"
+2003,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MinMaxScaler,KNN,"{'n_neighbors': 3, 'p': 2, 'weights': 'uniform'}",0.9887640449438202,1.0,0.9743589743589743,0.987012987012987,"              precision    recall  f1-score   support
+
+       False       0.98      1.00      0.99       100
+        True       1.00      0.97      0.99        78
+
+    accuracy                           0.99       178
+   macro avg       0.99      0.99      0.99       178
+weighted avg       0.99      0.99      0.99       178
+","[[100   0]
+ [  2  76]]"
+2003,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,RobustScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9606741573033708,1.0,0.9102564102564102,0.9530201342281879,"              precision    recall  f1-score   support
+
+       False       0.93      1.00      0.97       100
+        True       1.00      0.91      0.95        78
+
+    accuracy                           0.96       178
+   macro avg       0.97      0.96      0.96       178
+weighted avg       0.96      0.96      0.96       178
+","[[100   0]
+ [  7  71]]"
+2003,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2003,17,MaxAbsScaler,KNN,"{'n_neighbors': 3, 'p': 2, 'weights': 'uniform'}",0.9887640449438202,1.0,0.9743589743589743,0.987012987012987,"              precision    recall  f1-score   support
+
+       False       0.98      1.00      0.99       100
+        True       1.00      0.97      0.99        78
+
+    accuracy                           0.99       178
+   macro avg       0.99      0.99      0.99       178
+weighted avg       0.99      0.99      0.99       178
+","[[100   0]
+ [  2  76]]"
+2003,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        78
+
+    accuracy                           1.00       178
+   macro avg       1.00      1.00      1.00       178
+weighted avg       1.00      1.00      1.00       178
+","[[100   0]
+ [  0  78]]"
+2004,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,NoScaling,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.9117647058823529,0.9824561403508771,0.8,0.8818897637795275,"              precision    recall  f1-score   support
+
+       False       0.88      0.99      0.93       100
+        True       0.98      0.80      0.88        70
+
+    accuracy                           0.91       170
+   macro avg       0.93      0.90      0.91       170
+weighted avg       0.92      0.91      0.91       170
+","[[99  1]
+ [14 56]]"
+2004,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,StandardScaler,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.9764705882352941,0.9852941176470589,0.9571428571428572,0.9710144927536232,"              precision    recall  f1-score   support
+
+       False       0.97      0.99      0.98       100
+        True       0.99      0.96      0.97        70
+
+    accuracy                           0.98       170
+   macro avg       0.98      0.97      0.98       170
+weighted avg       0.98      0.98      0.98       170
+","[[99  1]
+ [ 3 67]]"
+2004,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MinMaxScaler,KNN,"{'n_neighbors': 3, 'p': 2, 'weights': 'distance'}",0.9941176470588236,1.0,0.9857142857142858,0.9928057553956835,"              precision    recall  f1-score   support
+
+       False       0.99      1.00      1.00       100
+        True       1.00      0.99      0.99        70
+
+    accuracy                           0.99       170
+   macro avg       1.00      0.99      0.99       170
+weighted avg       0.99      0.99      0.99       170
+","[[100   0]
+ [  1  69]]"
+2004,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,RobustScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.9705882352941176,0.9850746268656716,0.9428571428571428,0.9635036496350365,"              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       100
+        True       0.99      0.94      0.96        70
+
+    accuracy                           0.97       170
+   macro avg       0.97      0.97      0.97       170
+weighted avg       0.97      0.97      0.97       170
+","[[99  1]
+ [ 4 66]]"
+2004,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2004,17,MaxAbsScaler,KNN,"{'n_neighbors': 3, 'p': 2, 'weights': 'distance'}",0.9941176470588236,1.0,0.9857142857142858,0.9928057553956835,"              precision    recall  f1-score   support
+
+       False       0.99      1.00      1.00       100
+        True       1.00      0.99      0.99        70
+
+    accuracy                           0.99       170
+   macro avg       1.00      0.99      0.99       170
+weighted avg       0.99      0.99      0.99       170
+","[[100   0]
+ [  1  69]]"
+2004,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        70
+
+    accuracy                           1.00       170
+   macro avg       1.00      1.00      1.00       170
+weighted avg       1.00      1.00      1.00       170
+","[[100   0]
+ [  0  70]]"
+2005,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        64
+
+    accuracy                           1.00       164
+   macro avg       1.00      1.00      1.00       164
+weighted avg       1.00      1.00      1.00       164
+","[[100   0]
+ [  0  64]]"
+2005,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,NoScaling,KNN,"{'n_neighbors': 3, 'p': 1, 'weights': 'distance'}",0.9146341463414634,1.0,0.78125,0.8771929824561403,"              precision    recall  f1-score   support
+
+       False       0.88      1.00      0.93       100
+        True       1.00      0.78      0.88        64
+
+    accuracy                           0.91       164
+   macro avg       0.94      0.89      0.91       164
+weighted avg       0.93      0.91      0.91       164
+","[[100   0]
+ [ 14  50]]"
+2005,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        64
+
+    accuracy                           1.00       164
+   macro avg       1.00      1.00      1.00       164
+weighted avg       1.00      1.00      1.00       164
+","[[100   0]
+ [  0  64]]"
+2005,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,StandardScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.975609756097561,0.96875,0.96875,0.96875,"              precision    recall  f1-score   support
+
+       False       0.98      0.98      0.98       100
+        True       0.97      0.97      0.97        64
+
+    accuracy                           0.98       164
+   macro avg       0.97      0.97      0.97       164
+weighted avg       0.98      0.98      0.98       164
+","[[98  2]
+ [ 2 62]]"
+2005,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        64
+
+    accuracy                           1.00       164
+   macro avg       1.00      1.00      1.00       164
+weighted avg       1.00      1.00      1.00       164
+","[[100   0]
+ [  0  64]]"
+2005,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,MinMaxScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9939024390243902,1.0,0.984375,0.9921259842519685,"              precision    recall  f1-score   support
+
+       False       0.99      1.00      1.00       100
+        True       1.00      0.98      0.99        64
+
+    accuracy                           0.99       164
+   macro avg       1.00      0.99      0.99       164
+weighted avg       0.99      0.99      0.99       164
+","[[100   0]
+ [  1  63]]"
+2005,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        64
+
+    accuracy                           1.00       164
+   macro avg       1.00      1.00      1.00       164
+weighted avg       1.00      1.00      1.00       164
+","[[100   0]
+ [  0  64]]"
+2005,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,RobustScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9878048780487805,0.9696969696969697,1.0,0.9846153846153847,"              precision    recall  f1-score   support
+
+       False       1.00      0.98      0.99       100
+        True       0.97      1.00      0.98        64
+
+    accuracy                           0.99       164
+   macro avg       0.98      0.99      0.99       164
+weighted avg       0.99      0.99      0.99       164
+","[[98  2]
+ [ 0 64]]"
+2005,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",1.0,1.0,1.0,1.0,"              precision    recall  f1-score   support
+
+       False       1.00      1.00      1.00       100
+        True       1.00      1.00      1.00        64
+
+    accuracy                           1.00       164
+   macro avg       1.00      1.00      1.00       164
+weighted avg       1.00      1.00      1.00       164
+","[[100   0]
+ [  0  64]]"
+2005,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2005,17,MaxAbsScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9939024390243902,1.0,0.984375,0.9921259842519685,"              precision    recall  f1-score   support
+
+       False       0.99      1.00      1.00       100
+        True       1.00      0.98      0.99        64
+
+    accuracy                           0.99       164
+   macro avg       1.00      0.99      0.99       164
+weighted avg       0.99      0.99      0.99       164
+","[[100   0]
+ [  1  63]]"
+2005,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9695121951219512,1.0,0.921875,0.959349593495935,"              precision    recall  f1-score   support
+
+       False       0.95      1.00      0.98       100
+        True       1.00      0.92      0.96        64
+
+    accuracy                           0.97       164
+   macro avg       0.98      0.96      0.97       164
+weighted avg       0.97      0.97      0.97       164
+","[[100   0]
+ [  5  59]]"
+2006,17,NoScaling,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",0.9926470588235294,0.972972972972973,1.0,0.9863013698630136,"              precision    recall  f1-score   support
+
+       False       1.00      0.99      0.99       100
+        True       0.97      1.00      0.99        36
+
+    accuracy                           0.99       136
+   macro avg       0.99      0.99      0.99       136
+weighted avg       0.99      0.99      0.99       136
+","[[99  1]
+ [ 0 36]]"
+2006,17,NoScaling,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9632352941176471,0.9696969696969697,0.8888888888888888,0.927536231884058,"              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       100
+        True       0.97      0.89      0.93        36
+
+    accuracy                           0.96       136
+   macro avg       0.97      0.94      0.95       136
+weighted avg       0.96      0.96      0.96       136
+","[[99  1]
+ [ 4 32]]"
+2006,17,NoScaling,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9779411764705882,0.9714285714285714,0.9444444444444444,0.9577464788732394,"              precision    recall  f1-score   support
+
+       False       0.98      0.99      0.99       100
+        True       0.97      0.94      0.96        36
+
+    accuracy                           0.98       136
+   macro avg       0.98      0.97      0.97       136
+weighted avg       0.98      0.98      0.98       136
+","[[99  1]
+ [ 2 34]]"
+2006,17,NoScaling,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9485294117647058,0.967741935483871,0.8333333333333334,0.8955223880597015,"              precision    recall  f1-score   support
+
+       False       0.94      0.99      0.97       100
+        True       0.97      0.83      0.90        36
+
+    accuracy                           0.95       136
+   macro avg       0.96      0.91      0.93       136
+weighted avg       0.95      0.95      0.95       136
+","[[99  1]
+ [ 6 30]]"
+2006,17,NoScaling,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9779411764705882,0.9714285714285714,0.9444444444444444,0.9577464788732394,"              precision    recall  f1-score   support
+
+       False       0.98      0.99      0.99       100
+        True       0.97      0.94      0.96        36
+
+    accuracy                           0.98       136
+   macro avg       0.98      0.97      0.97       136
+weighted avg       0.98      0.98      0.98       136
+","[[99  1]
+ [ 2 34]]"
+2006,17,StandardScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",0.9926470588235294,0.972972972972973,1.0,0.9863013698630136,"              precision    recall  f1-score   support
+
+       False       1.00      0.99      0.99       100
+        True       0.97      1.00      0.99        36
+
+    accuracy                           0.99       136
+   macro avg       0.99      0.99      0.99       136
+weighted avg       0.99      0.99      0.99       136
+","[[99  1]
+ [ 0 36]]"
+2006,17,StandardScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9632352941176471,0.9696969696969697,0.8888888888888888,0.927536231884058,"              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       100
+        True       0.97      0.89      0.93        36
+
+    accuracy                           0.96       136
+   macro avg       0.97      0.94      0.95       136
+weighted avg       0.96      0.96      0.96       136
+","[[99  1]
+ [ 4 32]]"
+2006,17,StandardScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9705882352941176,0.9705882352941176,0.9166666666666666,0.9428571428571428,"              precision    recall  f1-score   support
+
+       False       0.97      0.99      0.98       100
+        True       0.97      0.92      0.94        36
+
+    accuracy                           0.97       136
+   macro avg       0.97      0.95      0.96       136
+weighted avg       0.97      0.97      0.97       136
+","[[99  1]
+ [ 3 33]]"
+2006,17,StandardScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.9338235294117647,0.8461538461538461,0.9166666666666666,0.88,"              precision    recall  f1-score   support
+
+       False       0.97      0.94      0.95       100
+        True       0.85      0.92      0.88        36
+
+    accuracy                           0.93       136
+   macro avg       0.91      0.93      0.92       136
+weighted avg       0.94      0.93      0.93       136
+","[[94  6]
+ [ 3 33]]"
+2006,17,StandardScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9705882352941176,0.9705882352941176,0.9166666666666666,0.9428571428571428,"              precision    recall  f1-score   support
+
+       False       0.97      0.99      0.98       100
+        True       0.97      0.92      0.94        36
+
+    accuracy                           0.97       136
+   macro avg       0.97      0.95      0.96       136
+weighted avg       0.97      0.97      0.97       136
+","[[99  1]
+ [ 3 33]]"
+2006,17,MinMaxScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",0.9926470588235294,0.972972972972973,1.0,0.9863013698630136,"              precision    recall  f1-score   support
+
+       False       1.00      0.99      0.99       100
+        True       0.97      1.00      0.99        36
+
+    accuracy                           0.99       136
+   macro avg       0.99      0.99      0.99       136
+weighted avg       0.99      0.99      0.99       136
+","[[99  1]
+ [ 0 36]]"
+2006,17,MinMaxScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9632352941176471,0.9696969696969697,0.8888888888888888,0.927536231884058,"              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       100
+        True       0.97      0.89      0.93        36
+
+    accuracy                           0.96       136
+   macro avg       0.97      0.94      0.95       136
+weighted avg       0.96      0.96      0.96       136
+","[[99  1]
+ [ 4 32]]"
+2006,17,MinMaxScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9779411764705882,0.9714285714285714,0.9444444444444444,0.9577464788732394,"              precision    recall  f1-score   support
+
+       False       0.98      0.99      0.99       100
+        True       0.97      0.94      0.96        36
+
+    accuracy                           0.98       136
+   macro avg       0.98      0.97      0.97       136
+weighted avg       0.98      0.98      0.98       136
+","[[99  1]
+ [ 2 34]]"
+2006,17,MinMaxScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.9338235294117647,0.8461538461538461,0.9166666666666666,0.88,"              precision    recall  f1-score   support
+
+       False       0.97      0.94      0.95       100
+        True       0.85      0.92      0.88        36
+
+    accuracy                           0.93       136
+   macro avg       0.91      0.93      0.92       136
+weighted avg       0.94      0.93      0.93       136
+","[[94  6]
+ [ 3 33]]"
+2006,17,MinMaxScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9779411764705882,0.9714285714285714,0.9444444444444444,0.9577464788732394,"              precision    recall  f1-score   support
+
+       False       0.98      0.99      0.99       100
+        True       0.97      0.94      0.96        36
+
+    accuracy                           0.98       136
+   macro avg       0.98      0.97      0.97       136
+weighted avg       0.98      0.98      0.98       136
+","[[99  1]
+ [ 2 34]]"
+2006,17,RobustScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",0.9926470588235294,0.972972972972973,1.0,0.9863013698630136,"              precision    recall  f1-score   support
+
+       False       1.00      0.99      0.99       100
+        True       0.97      1.00      0.99        36
+
+    accuracy                           0.99       136
+   macro avg       0.99      0.99      0.99       136
+weighted avg       0.99      0.99      0.99       136
+","[[99  1]
+ [ 0 36]]"
+2006,17,RobustScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9632352941176471,0.9696969696969697,0.8888888888888888,0.927536231884058,"              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       100
+        True       0.97      0.89      0.93        36
+
+    accuracy                           0.96       136
+   macro avg       0.97      0.94      0.95       136
+weighted avg       0.96      0.96      0.96       136
+","[[99  1]
+ [ 4 32]]"
+2006,17,RobustScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9705882352941176,0.9705882352941176,0.9166666666666666,0.9428571428571428,"              precision    recall  f1-score   support
+
+       False       0.97      0.99      0.98       100
+        True       0.97      0.92      0.94        36
+
+    accuracy                           0.97       136
+   macro avg       0.97      0.95      0.96       136
+weighted avg       0.97      0.97      0.97       136
+","[[99  1]
+ [ 3 33]]"
+2006,17,RobustScaler,KNN,"{'n_neighbors': 7, 'p': 1, 'weights': 'distance'}",0.9338235294117647,0.8461538461538461,0.9166666666666666,0.88,"              precision    recall  f1-score   support
+
+       False       0.97      0.94      0.95       100
+        True       0.85      0.92      0.88        36
+
+    accuracy                           0.93       136
+   macro avg       0.91      0.93      0.92       136
+weighted avg       0.94      0.93      0.93       136
+","[[94  6]
+ [ 3 33]]"
+2006,17,RobustScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9705882352941176,0.9705882352941176,0.9166666666666666,0.9428571428571428,"              precision    recall  f1-score   support
+
+       False       0.97      0.99      0.98       100
+        True       0.97      0.92      0.94        36
+
+    accuracy                           0.97       136
+   macro avg       0.97      0.95      0.96       136
+weighted avg       0.97      0.97      0.97       136
+","[[99  1]
+ [ 3 33]]"
+2006,17,MaxAbsScaler,XGBoost,"{'colsample_bytree': 0.6, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.6}",0.9926470588235294,0.972972972972973,1.0,0.9863013698630136,"              precision    recall  f1-score   support
+
+       False       1.00      0.99      0.99       100
+        True       0.97      1.00      0.99        36
+
+    accuracy                           0.99       136
+   macro avg       0.99      0.99      0.99       136
+weighted avg       0.99      0.99      0.99       136
+","[[99  1]
+ [ 0 36]]"
+2006,17,MaxAbsScaler,RandomForest,"{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 50}",0.9632352941176471,0.9696969696969697,0.8888888888888888,0.927536231884058,"              precision    recall  f1-score   support
+
+       False       0.96      0.99      0.98       100
+        True       0.97      0.89      0.93        36
+
+    accuracy                           0.96       136
+   macro avg       0.97      0.94      0.95       136
+weighted avg       0.96      0.96      0.96       136
+","[[99  1]
+ [ 4 32]]"
+2006,17,MaxAbsScaler,GradientBoosting,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 50}",0.9779411764705882,0.9714285714285714,0.9444444444444444,0.9577464788732394,"              precision    recall  f1-score   support
+
+       False       0.98      0.99      0.99       100
+        True       0.97      0.94      0.96        36
+
+    accuracy                           0.98       136
+   macro avg       0.98      0.97      0.97       136
+weighted avg       0.98      0.98      0.98       136
+","[[99  1]
+ [ 2 34]]"
+2006,17,MaxAbsScaler,KNN,"{'n_neighbors': 5, 'p': 1, 'weights': 'distance'}",0.9338235294117647,0.8461538461538461,0.9166666666666666,0.88,"              precision    recall  f1-score   support
+
+       False       0.97      0.94      0.95       100
+        True       0.85      0.92      0.88        36
+
+    accuracy                           0.93       136
+   macro avg       0.91      0.93      0.92       136
+weighted avg       0.94      0.93      0.93       136
+","[[94  6]
+ [ 3 33]]"
+2006,17,MaxAbsScaler,DT,"{'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 2}",0.9779411764705882,0.9714285714285714,0.9444444444444444,0.9577464788732394,"              precision    recall  f1-score   support
+
+       False       0.98      0.99      0.99       100
+        True       0.97      0.94      0.96        36
+
+    accuracy                           0.98       136
+   macro avg       0.98      0.97      0.97       136
+weighted avg       0.98      0.98      0.98       136
+","[[99  1]
+ [ 2 34]]"
