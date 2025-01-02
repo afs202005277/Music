@@ -61,6 +61,72 @@ This repository consists of various Python scripts, each handling distinct aspec
 
 - **Output**: Visualizations including histograms for distribution and bar charts for categorical data such as genres and top artists.
 
+### 7. **`features_evolution.ipynb`**
+- **Purpose**: Provides a detailed temporal analysis of musical attributes and trends across years, enriched with artist and genre-specific visualizations.
+- **Features**:
+    - **Feature Evolution Analysis:**
+        - Computes and visualizes the yearly evolution of key musical features such as energy, tempo, loudness, danceability, etc.
+        - Generates line plots to display changes in features over time.
+
+    - **Artist and Genre Exploration:**
+        - Constructs word clouds for visualizing the most popular artists and genres for specific years (e.g., 2011 and 2016).
+        - Provides comparisons between top artists to highlight their contributions and key features.
+
+    - **Insights into Specific Years:**
+        - Focuses on specific years (e.g., 2011 and 2016) to analyze energy contributions and musical trends.
+        - Highlights top artists through bar charts showing their feature dominance (e.g., peak energy, number of hits).
+
+    - **Artist-Level Analysis:**
+        - Tracks the evolution of hits by individual artists over time.
+        - Compares artist-specific feature averages against overall dataset averages.
+
+    - **Custom Explorations:**
+        - Integrates summary statistics for features by specific artists.
+        - Visualizes the effect of individual artist contributions (e.g., Drake) on dataset-wide trends.
+
+- **Output**:
+    - Multiple visualizations, including line plots for temporal trends, bar charts for top contributors, and word clouds for genres/artists.
+    - In addition to visual output, it provides insights into the evolution and influence of music over time.
+
+### 8. **`musicHitClustering.py`**
+- **Purpose**: Leverages clustering algorithms and dimensionality reduction to identify patterns and group similarities within musical features of hit songs.
+- **Features**:
+    - **Clustering by Feature Groups**:
+        - Divides features into distinct groups for focused clustering:
+            1. **Energy-Based** (e.g., tempo, loudness).
+            2. **Acoustic-Based** (e.g., valence, acousticness).
+            3. **Danceability-Based** (e.g., danceability, speechiness, duration).
+
+        - Executes clustering separately for each group to identify meaningful patterns in each domain.
+
+    - **Preprocessing**:
+        - Handles missing data by imputing mean values for features.
+        - Standardizes feature scales using `StandardScaler` to ensure valid clustering results.
+
+    - **K-Means Clustering**:
+        - Utilizes the K-Means algorithm to group songs based on specific feature sets.
+        - Employs the **Elbow Method** to determine the optimal number of clusters, minimizing inertia while avoiding overfitting.
+
+    - **Dimensionality Reduction**:
+        - Applies Principal Component Analysis (PCA) for feature reduction, projecting data into 2D space.
+        - Explains variance percentages contributed by the PCA components.
+
+    - **Visualization**:
+        - Generates scatter plots for clusters in 2D space.
+        - Annotates visual clusters with axis labels based on dominant features contributing to PCA components.
+        - Visualizes the Elbow Method curves for clarity in selecting the optimal number of clusters.
+
+    - **Feature Contributions**:
+        - Analyzes and displays feature contributions for each PCA dimension.
+        - Highlights the most influential features for cluster separation.
+
+- **Output**:
+    - Interactive visualizations for each feature cluster:
+        - **Elbow Method Plot**: To identify the optimal number of clusters.
+        - **PCA Scatter Plot**: Showcases clusters in 2D space with feature-based axis labels.
+
+    - Feature contribution tables for each PCA component, aiding interpretability.
+
 ## Folder Structure
 - **`datasets/`**: Contains raw CSV files for input data from various sources.
 - **`models/`**: Stores trained machine learning models.
