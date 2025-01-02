@@ -62,7 +62,7 @@ This repository consists of various Python scripts, each handling distinct aspec
 - **Output**: Visualizations including histograms for distribution and bar charts for categorical data such as genres and top artists.
 
 ### 7. **`features_evolution.ipynb`**
-- **Purpose**: Provides a detailed temporal analysis of musical attributes and trends across years, enriched with artist and genre-specific visualizations.
+- **Purpose**: Provides a detailed temporal analysis of musical features and trends across years, enriched with artist and genre-specific visualizations, highlighting key shifts in the industry, and analyzing contributions from notable artists and genres.
 - **Features**:
     - **Feature Evolution Analysis:**
         - Computes and visualizes the yearly evolution of key musical features such as energy, tempo, loudness, danceability, etc.
@@ -71,6 +71,7 @@ This repository consists of various Python scripts, each handling distinct aspec
     - **Artist and Genre Exploration:**
         - Constructs word clouds for visualizing the most popular artists and genres for specific years (e.g., 2011 and 2016).
         - Provides comparisons between top artists to highlight their contributions and key features.
+        - Highlights contributions of top artists, including their evolution and relevance over time.
 
     - **Insights into Specific Years:**
         - Focuses on specific years (e.g., 2011 and 2016) to analyze energy contributions and musical trends.
