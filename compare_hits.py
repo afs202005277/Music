@@ -74,7 +74,7 @@ def compare_hits_year(year1, year2):
                     fontsize=15, color='black')
 
     plt.tight_layout()
-    plt.savefig('year_compare.png')
+    plt.savefig('charts/year_compare.png')
     
 def compare_number_of_weeks(sep):
     # Load the dataset
@@ -150,7 +150,7 @@ def compare_number_of_weeks(sep):
                     fontsize=14, color='black')
 
     plt.tight_layout()
-    plt.savefig('week_on_top_compare.png')
+    plt.savefig('charts/week_on_top_compare.png')
     
     
 plt.rcParams.update({'font.size': 15})

@@ -18,7 +18,7 @@ plt.figure()
 correlation_matrix = data[numerical_features].corr()
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Heatmap")
-plt.savefig("hist_analysis/correlation_heatmap.png")
+plt.savefig("charts/correlation_heatmap.png")
 plt.show()
 
 # Analyze histograms and find top 5 deviations
