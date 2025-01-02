@@ -524,11 +524,3 @@ if __name__ == "__main__":
     print(len(pd.read_csv('dataset.csv')))
     process_csv('dataset.csv')
 
-"""
-Datasets (inside "datasets" folder):
-https://www.kaggle.com/datasets/priyamchoksi/spotify-dataset-114k-songs => 114000.csv
-https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019 => 2000_2019.csv
-https://www.kaggle.com/datasets/muhmores/spotify-top-100-songs-of-20152019 => 2010_2019.csv
-https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks => spotify_data.csv
-https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-songs => 30000.csv
-"""
